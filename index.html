@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Arsenal Fan page</title>
     <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -22,46 +26,58 @@
     <script type="text/babel">
       class NavLink extends React.Component {
         render() {
-          return <a href={`#${this.props.itemName}`}>{this.props.itemName}</a>;
+          return (
+            <a className="nav-item" href={`#${this.props.itemName}`}>
+              {this.props.itemName}
+            </a>
+          );
         }
       }
       const Navigation = () => (
         <nav className="navigation">
-          <img src="http://placehold.it/100x100" alt="avatar" />
+          <img
+            className="avatar"
+            src="http://placehold.it/100x100"
+            alt="avatar"
+          />
           <NavLink itemName="INTRO" />
           <NavLink itemName="project1" />
           <NavLink itemName="project2" />
         </nav>
       );
       const Intro = () => (
-        <div>
-          <h1>shinjjune's portfolio</h1>
+        <div className="section" id="INTRO">
           <div>
-            <a href="sjh8236@naver.com">sjh8236@naver.com</a>
-            <p>서울 성북구 삼</p>
-          </div>
-          <div>
-            <h2>경력</h2>
-            <p>초짜임</p>
-            <h2>자기소개</h2>
-            <p>취업하고 싶어요</p>
+            <h1>shinjjune's portfolio</h1>
+            <div>
+              <a href="sjh8236@naver.com">sjh8236@naver.com</a>
+              <p>서울 성북구 삼</p>
+            </div>
+            <div>
+              <h2>경력</h2>
+              <p>초짜임</p>
+              <h2>자기소개</h2>
+              <p>취업하고 싶어요</p>
+            </div>
           </div>
         </div>
       );
       const Project = ({ name, time, summary, epilogue, resultsURL }) => (
-        <div>
-          <h1>{name}</h1>
-          <p>{time}</p>
+        <div className="section" id={name}>
           <div>
-            <h2>개요</h2>
-            <p>{summary}</p>
-            <h2>후기</h2>
-            <p>{epilogue}</p>
-            <h2>결과</h2>
+            <h1>{name}</h1>
+            <p>{time}</p>
             <div>
-              {resultsURL.map(url => (
-                <img src={url} alt="project result" />
-              ))}
+              <h2>개요</h2>
+              <p>{summary}</p>
+              <h2>후기</h2>
+              <p>{epilogue}</p>
+              <h2>결과</h2>
+              <div>
+                {resultsURL.map(url => (
+                  <img src={url} alt="project result" />
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -69,7 +85,7 @@
 
       const projects = [
         {
-          name: "프로젝트1",
+          name: "project1",
           time: "2019.04~2019.05",
           summary: "blablabla...",
           epilogue: "집에가고싶다",
@@ -81,7 +97,7 @@
           ]
         },
         {
-          name: "프로젝트2",
+          name: "project2",
           time: "2019.04~2019.05",
           summary: "blablabla...",
           epilogue: "집에가고싶다",
@@ -97,9 +113,13 @@
       const App = () => (
         <div>
           <Navigation />
-          <Intro />
-          <Project {...projects[0]} />
-          <Project {...projects[1]} />
+          <div className="main">
+            <div className="column-start">
+              <Intro />
+              <Project {...projects[0]} />
+              <Project {...projects[1]} />
+            </div>
+          </div>
         </div>
       );
       ReactDOM.render(<App />, document.querySelector("#root"));
