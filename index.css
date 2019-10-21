@@ -1,0 +1,11 @@
+.navigation {
+  background-color: darkgray;
+  position: fixed;
+  width: 20vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  min-width: 150px;
+}
