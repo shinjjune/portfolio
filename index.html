@@ -1,1 +1,107 @@
-mathiue flamini
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Arsenal Fan page</title>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+    <script type="text/babel">
+      class NavLink extends React.Component {
+        render() {
+          return <a href={`#${this.props.itemName}`}>{this.props.itemName}</a>;
+        }
+      }
+      const Navigation = () => (
+        <nav>
+          <img src="http://placehold.it/100x100" alt="avatar" />
+          <NavLink itemName="INTRO" />
+          <NavLink itemName="project1" />
+          <NavLink itemName="project2" />
+        </nav>
+      );
+      const Intro = () => (
+        <div>
+          <h1>shinjjune's portfolio</h1>
+          <div>
+            <a href="sjh8236@naver.com">sjh8236@naver.com</a>
+            <p>서울 성북구 삼</p>
+          </div>
+          <div>
+            <h2>경력</h2>
+            <p>초짜임</p>
+            <h2>자기소개</h2>
+            <p>취업하고 싶어요</p>
+          </div>
+        </div>
+      );
+      const Project = ({ name, time, summary, epilogue, resultsURL }) => (
+        <div>
+          <h1>{name}</h1>
+          <p>{time}</p>
+          <div>
+            <h2>개요</h2>
+            <p>{summary}</p>
+            <h2>후기</h2>
+            <p>{epilogue}</p>
+            <h2>결과</h2>
+            <div>
+              {resultsURL.map(url => (
+                <img src={url} alt="project result" />
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+
+      const projects = [
+        {
+          name: "프로젝트1",
+          time: "2019.04~2019.05",
+          summary: "blablabla...",
+          epilogue: "집에가고싶다",
+          resultsURL: [
+            "http://placehold.it/200x200",
+            "http://placehold.it/200x200",
+            "http://placehold.it/200x200",
+            "http://placehold.it/200x200"
+          ]
+        },
+        {
+          name: "프로젝트2",
+          time: "2019.04~2019.05",
+          summary: "blablabla...",
+          epilogue: "집에가고싶다",
+          resultsURL: [
+            "http://placehold.it/200x200",
+            "http://placehold.it/200x200",
+            "http://placehold.it/200x200",
+            "http://placehold.it/200x200"
+          ]
+        }
+      ];
+
+      const App = () => (
+        <div>
+          <Navigation />
+          <Intro />
+          <Project {...projects[0]} />
+          <Project {...projects[1]} />
+        </div>
+      );
+      ReactDOM.render(<App />, document.querySelector("#root"));
+    </script>
+  </body>
+</html>
